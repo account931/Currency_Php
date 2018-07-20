@@ -25,7 +25,7 @@ function currency($from_Currency,$to_Currency,$amount) {
 
 
 
-// open exchange URL // valid app_id * REQUIRED *  //https://openexchangerates.org/api/latest.json?app_id=14721b0e0be44cc9b0d056ef5a3470cd
+// open exchange URL // valid app_id * REQUIRED *  //https://openexchangerates.org/api/latest.json?app_id=147
 $exchange_url = 'https://openexchangerates.org/api/latest.json';
 $params = array(
     'app_id' => '14721b0e0be44cc9b0d056ef5a3470cd'
