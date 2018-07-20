@@ -25,7 +25,7 @@
 	       //$city = "Kyiv";
 	
 	       //form the URL for weather API
-	       $data_url = "https://openexchangerates.org/api/latest.json?app_id=14721b0e0be44cc9b0d056ef5a3470cd";  //
+	       $data_url = "https://openexchangerates.org/api/latest.json?app_id=147";  //
 	      //echo "<br>url " . $data_url;
 	
 	     // Gets the OpenWeather API
