@@ -14,6 +14,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <script src="js/myCurrency.js"></script><!--  Core Currency JS-->  
+	  <script src="js/currenciesList.js"></script><!--  List of currencies + generates <list><option> JS--> 
 	 
       <link rel="stylesheet" type="text/css" media="all" href="css/myCurrency.css">
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- Icon lib-->
@@ -40,10 +41,13 @@
 	   
          <h1 id="h1Text">
              <img id ="wLogo" class="shrink-large" src=""/>		 
-		     <span id="textChange" class="textShadow"> Currency</span> 
-			 <i class="fa fa-plug" style="font-size:36px"></i>
+		     <span id="textChange" class="textShadow"> Live Currency Exchange rates</span> 
+			 <i class="	fa fa-balance-scale" style="font-size:59px"></i> 
 		     
 			 <img id ="wLogo2" src=""/>
+			 <br>
+			 <?php date_default_timezone_set("Europe/Kyiv"); ?>
+			 <span id="" style="font-size:0.4em;" class="textShadow">last update:   <?php echo date("l") . ", " . date("d-m-Y") ." " .  date("h:i:sa") ?>  from Openexchangerates Stock</span> 
 			
 			 
 		 </h1> 
@@ -62,31 +66,23 @@
 		   
 		   
 		         <div class="col-sm-12 col-xs-12 myShadow mainX" style="background-color:lavender;">
+				     <i class="	fa fa-dollar" style="font-size:40px"></i>&nbsp;&nbsp;<i class="fa fa-toggle-on" style="font-size:40px"></i>
 				 
 			         <form class="form-inline" action="Classes/Currency.php">
                           <div class="form-group">
                               <label for="sum">Sum</label>
-                              <input type="text" class="form-control" id="sum" name="sumX">
+                              <input type="number" min="1" value="1" class="form-control" id="sum" name="sumX">
                           </div>
-                          <div class="form-group">
-                              <label for="sel1">From : </label>
-                              <select class="form-control" id="sel1">
-                                  <option>USD</option>
-                                  <option>UAH</option>
-                                  <option>GBP</option>
-                                  <option>RUB</option>
-                               </select>
+						  
+                          <div class="form-group" id="Currency1_dropdown1"><!-- Currency 1 dropdown (from), generated in js/currenciesList.js with function {generateSelectOption(selectedOption, i, spanID, textR)}--> 
                           </div>
-						  <div class="form-group">
-                              <label for="toC">To : </label>
-                              <select class="form-control" id="toC">
-                                  <option>GBP</option>
-                                  <option>UAH</option>
-                                  <option>USD</option>
-                                  <option>RUB</option>
-                               </select>
+						  
+						  <div class="form-group" id="Currency2_dropdown2">> <!-- Currency 2 dropdown (to), generated in js/currenciesList.js with function {generateSelectOption(selectedOption, i, spanID, textR)}--> 
                           </div>
-                          <input id ="getCurrency" type="button" class="btn btn-default fa fa-cc-visa" style="font-size:20px" value="OK">
+						  
+                          <input id ="getCurrencyExchange" type="button" class="btn btn-default fa fa-cc-visa" style="font-size:20px" value="OK">
+						  <input id ="getAllCurrencyList" type="button" class="btn btn-default fa fa-cc-visa" style="font-size:20px" value="Show all List">
+						  <br><br><br>
                       </form>
 				   
 			     </div> <!--END  <div class="col-sm-4 col-xs-12 myShadow mainX-->
@@ -98,9 +94,13 @@
 				  
 				  <!----Currency Core result---->
 				  <!-- This div accept the JS html result--><!--style='word-wrap: break-word;'--> 
-				<div class="col-sm-12 col-xs-12 myShadow" id="currencyResult"  > 
+				  
+				  <div class="col-sm-12 col-xs-12 myShadow" id="exchangeResult"> <!-- div calc exchange-->
+				  </div> <!-- END class="row exchangeResult">-->
+				
+				 <div class="col-sm-12 col-xs-12 myShadow" id="currencyResult"> <!-- div for listing all curr rates-->
 		
-				</div> <!-- END class="row CurrencyResult">-->
+				 </div> <!-- END class="row CurrencyResult">-->
 				  
 				  
 				  
