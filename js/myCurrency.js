@@ -11,8 +11,20 @@ $(document).ready(function(){
 	
 	// Click to show all 170 currencies rate
 	$("#getAllCurrencyList").click(function() {  
-	    myAjax_toShowAllCurrenciesList();
+	    myAjax_toShowAllCurrenciesList(); //uses the same  function  myAjaxCurrencyRequest();
 	});
+	
+	
+	// Click to close results (list and exchange)
+	$(document).on("click", '.close-it', function() {   // this  click  is  used  to   react  to  newly generated cicles;
+         $("#currencyResult").fadeOut(700);	//hide all curr list
+         $("#exchangeResult").fadeOut(400);	
+         scroll_toTop();		 
+	    
+	});
+	
+	
+	
 	
 	
 	
@@ -23,7 +35,18 @@ $(document).ready(function(){
     // **************************************************************************************
     //                                                                                     **
 	function myAjaxCurrencyRequest() 
-	{	
+	{
+
+        //shows preloader spinner onClick
+		$("#overlay").show();
+		$("#overlay").fadeOut(4000);
+		
+		 if(screen.width <= 640){ 
+	       scrollResults("#currencyResult"); //scroll the page down to currencies results
+		 }
+		
+
+		
         // send  data  to  PHP handler  ************ 
         $.ajax({
             url: 'ajax_php/Currency_ajax.php',
@@ -39,16 +62,17 @@ $(document).ready(function(){
                 //$("#weatherResult").stop().fadeOut("slow",function(){ $(this).html(data) }).fadeIn(2000);
 			    //alert("S");
 				window.myJsonData = data; //assing to global
-				alert("AED is " + data.rates.AED);
+				//alert("AED is " + data.rates.AED);
 				
-				getAjaxCurrencyAnswer(data);
+				construct_ajaxCurrencyAnswer(data); //constructs the answer
             },  //end success
 			error: function (error) {
 				$("#currencyResult").stop().fadeOut("slow",function(){ $(this).html("<h4 style='color:red;padding:3em;'>ERROR!!! <br> NO Currency FOUND</h4>")}).fadeIn(2000);
             }	
-        });
-                                               
+        });                                      
        //  END AJAXed  part 
+	   
+	   
 	
 	}
 	
@@ -65,18 +89,18 @@ $(document).ready(function(){
 	
 	
 	
-	// Function that fires on ajax success of {myAjaxCurrencyRequest()} and forms the answer
+	// Function that fires on ajax success of {myAjaxCurrencyRequest()} and forms the answer/constructs the answer
 	// **************************************************************************************
     // **************************************************************************************
     //                                                                                     **
 	
-	function getAjaxCurrencyAnswer(data)
+	function construct_ajaxCurrencyAnswer(data)
 	{
 		
 		var l = Object.keys(data.rates).length;
 		//alert("Found currencies " + l);
 		
-		var alls = "<h3 class='red'>Available amount of  currencies => " + l + " </h3><br>";
+		var alls = "<h3 class='red'>All currencies => " + l + " </h3><div class='row border-black'>";
 		
 		for (var key in data.rates) {
 	    //for (var i = 0; i < l; i++){  
@@ -84,7 +108,7 @@ $(document).ready(function(){
 			              "<div class='col-sm-2 col-xs-5'>" + data.rates[key] +  "</div>" +
 					      "<div class='col-sm-9 col-xs-5'> per 1 USD </div>";
 		}
-	
+	    alls = alls + "</div>";
 	//html weather result with animation
     $("#currencyResult").stop().fadeOut("slow",function(){ $(this).html(alls)}).fadeIn(2000);
 	
@@ -124,6 +148,11 @@ $(document).ready(function(){
 	function calcTheSum()
 	{
 		if (checkIfNotTheSameVal()){
+			
+			 if(screen.width <= 640){ 
+	            scrollResults("#exchangeResult"); //scroll the page down to currencies results
+		     }
+		 
 		
              var curr1 = $("#sel1").val();
 		     var curr2 = $("#sel2").val();
@@ -138,14 +167,15 @@ $(document).ready(function(){
 			 
 			 
 			 // Mega Err was here-> use {window.myJsonData.rates[curr1]} not {window.myJsonData.rates.curr1} to access json object value while the key is a variable from <select><option>
-			 var amount = $("#sum").val();
+			 var amount = $("#sum").val(); // the sum to exchange
 			 var selected_toUSD = amount / window.myJsonData.rates[curr1]; //gets the amount of selected_1 currency in USD
 			 var finalExchange = (selected_toUSD *  window.myJsonData.rates[curr2]).toFixed(2) + " " + curr2; //gets the Final sum ( USD sum * exch rate selected_2 currency),{.toFixed(2)} = 3.77 instead 3.77458745438954
-		     var finalText = "<h3 class='red border'><i class='fa fa-child' style='font-size:48px;margin-left:5%;'></i><br><br>" +  $("#sum").val() + " " + curr1 + " = " + finalExchange + "</h3>"; // 100 UAH = 4 USD
+		     var finalText = "<h3 class='red border'><span class='badge close-it'>X</span><i class='fa fa-child' style='font-size:48px;margin-left:5%;'></i><br><br>" +  $("#sum").val() + " " + curr1 + " = " + finalExchange + "</h3>"; // 100 UAH = 4 USD
 			 
 			 //html weather result with animation
              $("#exchangeResult").stop().fadeOut("slow",function(){ $(this).html(finalText)}).fadeIn(2000);
-		 
+			 
+			
 		}  
 		  
 
@@ -210,7 +240,7 @@ $(document).ready(function(){
     //                                                                                     **
 	function myAjax_toShowAllCurrenciesList() 
 	{
-        alert("K");	
+        //alert("K");	
         myAjaxCurrencyRequest(); //runs ajax request to get all JSON curr List
 	}
 	
@@ -225,6 +255,49 @@ $(document).ready(function(){
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//-------------------------------DONOR------------------------------------------------------------------------------------------------------------------
+	
+	
+	
+	// Scroll the page to results  #resultFinal
+	// **************************************************************************************
+    // **************************************************************************************
+    //                                                                                     **
+	function scrollResults(divName) 
+	{
+		 
+         $('html, body').animate({     
+            scrollTop: $(divName).offset().top
+			//scrollTop: $('.footer').offset().top
+            //scrollTop: $('.your-class').offset().top
+        }, 'slow'); 
+		// END Scroll the page to results
+	}
+	
+	// **                                                                                  **
+    // **************************************************************************************
+    // **************************************************************************************
+	
+	
+	
+	//scrolls the page up
+	function scroll_toTop() 
+	{
+	    $("html, body").animate({ scrollTop: 0 }, "slow");	
+	}
 	
 	
 	

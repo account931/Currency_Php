@@ -1,5 +1,5 @@
 <?php
-    //include '../Classes/autoload.php'; //uses autoload instead of manual includin each class-> Error if it is included in 2 files=only1 is accepted
+    include '../Classes/autoload.php'; //uses autoload instead of manual includin each class-> Error if it is included in 2 files=only1 is accepted
 	
 	
 	   
@@ -9,7 +9,7 @@
    
    
     // run Class RunWeatherRequest to send file_get_contents($data_url)
-	//RunWeatherRequest::askWeatherApi();
+	Currency::askCurrencyApi();
 	
 	
 	
@@ -20,24 +20,6 @@
 	
 	
 	
-	//$city = $_POST['serverCity'];
-	       //echo "We get " . $city;
-	       //$city = "Kyiv";
-	
-	       //form the URL for weather API
-	       $data_url = "https://openexchangerates.org/api/latest.json?app_id=147";  //
-	      //echo "<br>url " . $data_url;
-	
-	     // Gets the OpenWeather API
-         if (!$json = file_get_contents($data_url)) {
-		     echo "<br>Currency php Error</br>";
-	     }
-         //echo $json;
-         //$obj = json_decode($json,true);//,  true used for [], not  used  for '->';
-	
-         echo $json;
-         //print_r($obj); // display the JSOn to screen
-         //echo json_encode($obj); // MAke sure JSOn encode  gotten result 
 	
 	
 	

@@ -47,7 +47,7 @@
 			 <img id ="wLogo2" src=""/>
 			 <br>
 			 <?php date_default_timezone_set("Europe/Kyiv"); ?>
-			 <span id="" style="font-size:0.4em;" class="textShadow">last update:   <?php echo date("l") . ", " . date("d-m-Y") ." " .  date("h:i:sa") ?>  from Openexchangerates Stock</span> 
+			 <span id="" style="font-size:0.4em;" class="textShadow">last update:   <?php echo date("l") . "  " . date("d/m/Y") ." " .  date("h:i") ?>  from Openexchangerates Stock</span> 
 			
 			 
 		 </h1> 
@@ -129,7 +129,16 @@
                 
 
        
-		
+		<!---------PAGE LOADER START, visible while the page is loading, uses js/main_layout.js, css is in yii2_mine.css--------------->
+	    <div id="overlay" class="col-sm-12 col-xs-12 myShadow">
+		    <center>
+		        <img src="images/spinner.gif" alt="" style="width:33%;"/>
+			</center>
+        </div>
+        <!---------END PAGE LOADER --------------->
+	
+	
+	
 		
 		
 		  <!-----Footer ---->

@@ -1,34 +1,44 @@
 <?php
-//NOT USED ANYTHING FROM THIS FILE!!!!!!!!!!!!!!!!!
-// function to google calc-NOT USED
-function currency($from_Currency,$to_Currency,$amount) {
-    $amount = urlencode($amount);
-    $from_Currency = urlencode($from_Currency);
-    $to_Currency = urlencode($to_Currency);
-    $url = "http://www.google.com/ig/calculator?hl=en&q=$amount$from_Currency=?$to_Currency";
-    $ch = curl_init();
-    $timeout = 0;
-    curl_setopt ($ch, CURLOPT_URL, $url);
-    curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch,  CURLOPT_USERAGENT , "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)");
-    curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-    $rawdata = curl_exec($ch);
-    curl_close($ch);
-    $data = explode('"', $rawdata);
-    $data = explode(' ', $data['3']);
-    $var = $data['0'];
-    return round($var,2);
+ class Currency
+ {
+		
+		
+		
+    public static function askCurrencyApi()
+	{
+		
+	     //form the URL for Currency API
+	     $data_url = "https://openexchangerates.org/api/latest.json?app_id=14721b0e0be44cc9b0d056ef5a3470cd";  //
+	
+	     // Gets the OpenWeather API
+         if (!$json = file_get_contents($data_url)) {
+		     echo "<br>Currency php Error</br>";
+	     }
+         //$obj = json_decode($json,true);//,  true used for [], not  used  for '->';
+	
+         echo $json;
+         //print_r($obj); // display the JSOn to screen
+         //echo json_encode($obj); // MAke sure JSOn encode  gotten result 
+	
+	}
+		
+		
+		
+		
+		
+		
+		
 }
 
 
 
 
 
-
-// open exchange URL // valid app_id * REQUIRED *  //https://openexchangerates.org/api/latest.json?app_id=14721b0e0be44cc9b0d056ef5a3470cd
+// open exchange URL // valid app_id * REQUIRED *  //https://openexchangerates.org/api/latest.json?app_id=API_KEY
+/*
 $exchange_url = 'https://openexchangerates.org/api/latest.json';
 $params = array(
-    'app_id' => '14721b0e0be44cc9b0d056ef5a3470cd'
+    'app_id' => 'API_KEY'
 );
 
 // make cURL request // parse JSON
@@ -47,7 +57,7 @@ if (!empty($response->rates)) {
 	echo "EMPTY";
 }
 
-
+*/
 
 
 
