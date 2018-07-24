@@ -8,7 +8,7 @@
 	{
 		
 	     //form the URL for Currency API
-	     $data_url = "https://openexchangerates.org/api/latest.json?app_id=14721b0e0be44cc9b0d056ef5a3470cd";  //
+	     $data_url = "https://openexchangerates.org/api/latest.json?app_id=0cd";  //
 	
 	     // Gets the OpenWeather API
          if (!$json = file_get_contents($data_url)) {
