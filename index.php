@@ -15,6 +15,7 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <script src="js/myCurrency.js"></script><!--  Core Currency JS-->  
 	  <script src="js/currenciesList.js"></script><!--  List of currencies + generates <list><option> JS--> 
+	  <script src="js/changeStyleTheme.js"></script><!--  change wallpapers,changeStyleTheme JS-->
 	 
       <link rel="stylesheet" type="text/css" media="all" href="css/myCurrency.css">
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- Icon lib-->
@@ -37,14 +38,14 @@
   
   
   
-   <div id="headX" class=" text-center myShadow colorAnimate" style ='background-color:lavender;padding:10px;'> <!--#2ba6cb;-->
+   <div id="headX" class=" text-center myShadow colorAnimate head-style"> <!--#2ba6cb;-->
 	   
          <h1 id="h1Text">
-             <img id ="wLogo" class="shrink-large" src=""/>		 
+             <img id ="wLogo" class="shrink-large" src="">	 
 		     <span id="textChange" class="textShadow"> Live Currency Exchange rates</span> 
 			 <i class="	fa fa-balance-scale" style="font-size:59px"></i> 
 		     
-			 <img id ="wLogo2" src=""/>
+			 <img id ="wLogo2" src="" style="width:44%;"/>
 			 <br>
 			 <?php date_default_timezone_set("Europe/Kyiv"); ?>
 			 <span id="" style="font-size:0.4em;" class="textShadow">last update:   <?php echo date("l") . "  " . date("d/m/Y") ." " .  date("h:i") ?>  from Openexchangerates Stock</span> 
@@ -65,7 +66,7 @@
 		   
 		   
 		   
-		         <div class="col-sm-12 col-xs-12 myShadow mainX" style="background-color:lavender;">
+		         <div class="col-sm-12 col-xs-12 myShadow mainX head-style" style="background-color:;">
 				     <i class="	fa fa-dollar" style="font-size:40px"></i>&nbsp;&nbsp;<i class="fa fa-toggle-on" style="font-size:40px"></i>
 				 
 			         <form class="form-inline" action="Classes/Currency.php">
@@ -163,7 +164,9 @@
   
   
   
-  
+       <!-----------------  Button to change Style theme------------------------->
+	   <input type="button" value=">>" id="changeStyle" style="position:absolute;top:0px;left:0px;"/>
+	   <!-----------------  Button to change Style theme------------------------->
   
   
   

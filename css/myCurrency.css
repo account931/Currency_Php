@@ -15,7 +15,7 @@
 
 
 
-/* Preloader, located in index.php, hidden by default */
+/* ---------------------Preloader, located in index.php, hidden by default */
 #overlay {
 	position:absolute;
 	top:16%;
@@ -34,9 +34,26 @@
   }
 }
 /* END Mobile */
-/* END Preloader, located in index.php, hidden by default */
+/* END --------------------Preloader, located in index.php, hidden by default */
+
+
 
 
 /* Close cog */
 .close-it{position:absolute; top:0px; right:0px;color:black;}
 .close-it:hover{cursor:pointer; color:red;}
+
+.head-style{
+	color:white;
+	background-color:lavender;padding:10px;
+	background-image: url();
+	text-shadow: 1px 1px 2px black, 0 0 1em red; /* Параметры тени */
+}
+
+/*
+https://i.pinimg.com/originals/08/58/d6/0858d6df28c34239fe8e0077e19be750.png  cash
+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQvp8gXVXK0Vb7ctlANuwugGW13OTnAWqriztJUGoBRXd0CXK8    blue
+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfDxrC1c4GaaJmBlciFeUZ8bsHheWefJXbGiUOFYOnXR5oGrVhAg  steel
+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScJTFmh8ur7hPYFn543z7OnYh1Kv3d51AQWWFiPDjJH8Bm7O3K    blue 2
+
+*/
