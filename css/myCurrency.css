@@ -6,7 +6,6 @@
   padding: 1rem;
   background-color: #efefef; /* #2ba6cb; */
   text-align: center;
-  
 }
 
 .red{color:red;}
@@ -21,6 +20,10 @@
 	top:16%;
 	display:none;
 }
+
+#overlay img {
+	width:33%;
+  }
 
 /* Mobile */
 @media screen and (max-width: 460px) {   
@@ -43,10 +46,12 @@
 .close-it{position:absolute; top:0px; right:0px;color:black;}
 .close-it:hover{cursor:pointer; color:red;}
 
+
+/* Class that sets background-image */
 .head-style{
 	color:white;
 	background-color:lavender;padding:10px;
-	background-image: url();
+	background-image: url('../images/bg-pattern.jpg');
 	text-shadow: 1px 1px 2px black, 0 0 1em red; /* Параметры тени */
 }
 
@@ -57,3 +62,25 @@ https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfDxrC1c4GaaJmBlciFeUZ8bsH
 https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScJTFmh8ur7hPYFn543z7OnYh1Kv3d51AQWWFiPDjJH8Bm7O3K    blue 2
 
 */
+
+
+
+
+
+
+
+
+
+.myShadow{
+    box-shadow: 10px 10px 5px grey;
+}
+ 
+.textShadow{ 
+    color: white; 
+	/* text-shadow: black 0.2em 0.1em 0.2em; */
+	text-shadow:
+    1px  1px 2px black,
+    1px -1px 2px black,
+   -1px  1px 2px black,
+   -1px -1px 2px black;	 
+} 

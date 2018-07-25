@@ -42,11 +42,11 @@ $(document).ready(function(){
 		$("#overlay").fadeOut(4000);
 		
 		 if(screen.width <= 640){ 
-	       scrollResults("#currencyResult"); //scroll the page down to currencies results
+	       scrollResults(".container"); //scroll the page down to currencies results  //#currencyResult
 		 }
 		
 
-		
+	
         // send  data  to  PHP handler  ************ 
         $.ajax({
             url: 'ajax_php/Currency_ajax.php',
@@ -100,7 +100,7 @@ $(document).ready(function(){
 		var l = Object.keys(data.rates).length;
 		//alert("Found currencies " + l);
 		
-		var alls = "<h3 class='red'>All currencies => " + l + " </h3><div class='row border-black'>";
+		var alls = "<h3 class='red myShadow textShadow'>All currencies => " + l + " </h3><div class='row border-black'>";
 		
 		for (var key in data.rates) {
 	    //for (var i = 0; i < l; i++){  
@@ -150,7 +150,7 @@ $(document).ready(function(){
 		if (checkIfNotTheSameVal()){
 			
 			 if(screen.width <= 640){ 
-	            scrollResults("#exchangeResult"); //scroll the page down to currencies results
+	            scrollResults(".container"); //scroll the page down to currencies results
 		     }
 		 
 		
@@ -170,7 +170,7 @@ $(document).ready(function(){
 			 var amount = $("#sum").val(); // the sum to exchange
 			 var selected_toUSD = amount / window.myJsonData.rates[curr1]; //gets the amount of selected_1 currency in USD
 			 var finalExchange = (selected_toUSD *  window.myJsonData.rates[curr2]).toFixed(2) + " " + curr2; //gets the Final sum ( USD sum * exch rate selected_2 currency),{.toFixed(2)} = 3.77 instead 3.77458745438954
-		     var finalText = "<h3 class='red border'><span class='badge close-it'>X</span><i class='fa fa-child' style='font-size:48px;margin-left:5%;'></i><br><br>" +  $("#sum").val() + " " + curr1 + " = " + finalExchange + "</h3>"; // 100 UAH = 4 USD
+		     var finalText = "<h3 class='red border-black myShadow textShadow'><span class='badge close-it' style='padding:0.8em;'>X</span><i class='fa fa-child' style='font-size:48px;margin-left:5%;'></i><br><br>" +  $("#sum").val() + " " + curr1 + " = " + finalExchange + "</h3>"; // 100 UAH = 4 USD
 			 
 			 //html weather result with animation
              $("#exchangeResult").stop().fadeOut("slow",function(){ $(this).html(finalText)}).fadeIn(2000);

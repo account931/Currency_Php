@@ -1,14 +1,14 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <title>Live Currency</title>
+      <title>Live Currency exchange rate</title>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	  
 	  <meta charset="utf-8">
       <meta http-equiv="Content-Type" content="text/html">
-      <meta name="description" content="Currency" />
-      <meta name="keywords" content="Currency calculator">
+      <meta name="description" content="Currency exchange rate data and currency conversion" />
+      <meta name="keywords" content="Currency calculator, exchange rate data and currency conversion">
 
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -48,6 +48,7 @@
 			 <img id ="wLogo2" src="" style="width:44%;"/>
 			 <br>
 			 <?php date_default_timezone_set("Europe/Kyiv"); ?>
+			 <span>Consistent, reliable exchange rate data and currency conversion</span><br>
 			 <span id="" style="font-size:0.4em;" class="textShadow">last update:   <?php echo date("l") . "  " . date("d/m/Y") ." " .  date("h:i") ?>  from Openexchangerates Stock</span> 
 			
 			 
@@ -61,6 +62,7 @@
 
 
          <br>
+		 <!--<div class="item contact padding-top-0 padding-bottom-0" id="contact1">-->
          <div class="wrapper grey">
     	     <div class="container">
 		   
@@ -126,17 +128,19 @@
      
     	     </div><!-- /.container -->			  		
     	 </div><!-- /.wrapper -->
-
+      <!--</div>-->   <!-- /.item -->
+	  
+	     <div style="height:277px;"></div><!-- just to press footer-->
                 
 
        
-		<!---------PAGE LOADER START, visible while the page is loading, uses js/main_layout.js, css is in yii2_mine.css--------------->
+		<!---------PAGE LOADER SPINNER START, visible while the page is loading, uses js/main_layout.js, css is in yii2_mine.css--------------->
 	    <div id="overlay" class="col-sm-12 col-xs-12 myShadow">
 		    <center>
 		        <img src="images/spinner.gif" alt="" style="width:33%;"/>
 			</center>
         </div>
-        <!---------END PAGE LOADER --------------->
+        <!---------END PAGE LOADER SPINNER------------------------------------------------------------------------------------------------------>
 	
 	
 	
@@ -165,11 +169,49 @@
   
   
        <!-----------------  Button to change Style theme------------------------->
-	   <input type="button" value=">>" id="changeStyle" style="position:absolute;top:0px;left:0px;"/>
+	   <input type="button" class="btn" value=">>" id="changeStyle" style="position:absolute;top:0px;left:0px;" title="click to change theme"/>
 	   <!-----------------  Button to change Style theme------------------------->
   
+      
+	   <!-----------------  Button with info------------------------------------>
+	   <!--data-toggle="modal" data-target="#myModalZ" is a Bootstrap trigger---->
+	   <button data-toggle="modal" data-target="#myModalZ" class="btn" style="font-size:17px; position:absolute;top:0px;right:0px;" title="click to see info">
+	       &nbsp;<i class="fa fa-info-circle"></i>&nbsp;
+	   </button>    
+	   <!-----------------  Button with info------------------------------------>
   
   
+  
+  
+  
+  
+      <!-----------------  Modal window with info------------------------------>
+      <div id="myModalZ" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+          <!-- Modal content-->
+              <div class="modal-content">
+                  <div class="modal-header">
+                       <button type="button" class="close" data-dismiss="modal">&times;</button>
+                       <h4 class="modal-title">About the Open Exchange </h4>
+                  </div>
+                  <div class="modal-body">
+				      <center>
+				      <img src="images/data.jpg" alt="img"/><br><br><br>
+                      <p>Open Exchange Rates provides a simple, lightweight and portable JSON API with live and historical foreign exchange (forex) rates for over 200 worldwide and digital currencies, via a simple and easy-to-integrate API, in JSON format. 
+					      <br><br>Data are tracked and blended algorithmically from multiple reliable sources, ensuring fair and unbiased consistency. 
+                          <br><br>Exchange rates published through the Open Exchange Rates API are collected from multiple reliable providers, blended together and served up in JSON format for everybody to use. There are no complex queries, confusing authentication methods or long-term contracts.
+                          <br><br>End-of-day rates are available historically for all days going back to 1st January, 1999.
+					  </p>
+					  </center>
+                  </div>
+                  <div class="modal-footer">
+                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+              </div>
+
+         </div>
+     </div>
+      <!-----------------  END Modal window with info---------------------------->
   
   
   

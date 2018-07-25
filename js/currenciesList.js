@@ -7,6 +7,7 @@ $(document).ready(function(){
 	    ["AED", "Дирхам ОАЭ"],
 	    ["AZN", "Азербайджанский манат"],
 		["BAM", "Марка Боснии и Герцеговины"],
+		["BTC", "Биткойн"],
 		["GNF", "Швейцарский франк"],
 		["EGP", "Египетский фунт"],
 		["EUR", "Евро"], 
@@ -14,8 +15,13 @@ $(document).ready(function(){
 		["ILS", "Израильский шекель" ],
 		["INR", "Индийская рупия"],
 		["RUB", "Рубль"],
+		["VEF", "Венесуэльский боливар"],
 		["UAH", "Гривна"],
-		["USD", "Доллар США"]
+		["USD", "Доллар США"],
+		["XAG" , "1 унция серебра (31 грамм)"],
+		["XAU", "1 унция золота (31 грамм)"],
+		["XPD", "1 унция палладия (31 грамм)"],
+		["XPT" ,"1 унция платины (31 грамм)"],
     ];
 	
 	
@@ -47,9 +53,9 @@ $(document).ready(function(){
 	
 	
 	
-	generateSelectOption( 10, 1, "Currency1_dropdown1", ""); //("which currency option to set selected, 1 or 2 to add to id="sel", span to html() <select><option>, text(from or to)
+	generateSelectOption( 13, 1, "Currency1_dropdown1", ""); //("which currency option to set selected, 1 or 2 to add to id="sel", span to html() <select><option>, text(from or to)
 	   
-	generateSelectOption( 11, 2, "Currency2_dropdown2", "To:&nbsp;");
+	generateSelectOption( 12, 2, "Currency2_dropdown2", "To:&nbsp;");
 	
 });
 // end ready	
