@@ -169,7 +169,44 @@ $(document).ready(function(){
 			 // Mega Err was here-> use {window.myJsonData.rates[curr1]} not {window.myJsonData.rates.curr1} to access json object value while the key is a variable from <select><option>
 			 var amount = $("#sum").val(); // the sum to exchange
 			 var selected_toUSD = amount / window.myJsonData.rates[curr1]; //gets the amount of selected_1 currency in USD
-			 var finalExchange = (selected_toUSD *  window.myJsonData.rates[curr2]).toFixed(2) + " " + curr2; //gets the Final sum ( USD sum * exch rate selected_2 currency),{.toFixed(2)} = 3.77 instead 3.77458745438954
+			 var exchangeRate = selected_toUSD * window.myJsonData.rates[curr2];  //gets the Final sum ( USD sum * exch rate selected_2 currency)
+			 
+			 
+			 // fixing cases when exchange rate = 0.001
+			 var n = 2;  //counter for toFixed(n)
+			 
+			 
+			 if (parseInt(exchangeRate) !== exchangeRate) {  //check if it is Float, n ot int (if has ".")
+                 alert("Float is detected");
+	             c = exchangeRate.toFixed(20);  // fixes trouble with long  floats,  helps to avoid scintific notation "e"
+	
+                 var stringX = c.toString();     //alert(stringX);
+	             var arr = c.split('.');
+                 var final = arr[1];  //alert('array -> ' + final);
+                 var i = 1;
+ 
+                 while (final[i] == 0) {  //arr[1]= 00007;
+                      ++i;
+                 }
+                 //alert(arr[1][1]);
+ 
+                 alert("cut to-> " + i);
+
+                 n = i + 1;
+	            //alert(parseFloat(c));
+                //alert(parseFloat(c).toFixed(n + 1));  //must include parseFloat(c) to convert string to Float ot  it will contain "e" //must include (n+1) to get correct toFix
+	 
+            } else { // if it is a int , not Float do nothing
+                alert("No match for FLOAT " + c);
+            }
+ 
+			 // end fixing
+			 
+			 
+			 
+			 
+			 
+			 var finalExchange = exchangeRate.toFixed(n) + " " + curr2; //gets the Final sum ( USD sum * exch rate selected_2 currency),{.toFixed(2)} = 3.77 instead 3.77458745438954
 		     var finalText = "<h3 class='red border-black myShadow textShadow'><span class='badge close-it' style='padding:0.8em;'>X</span><i class='fa fa-child' style='font-size:48px;margin-left:5%;'></i><br><br>" +  $("#sum").val() + " " + curr1 + " = " + finalExchange + "</h3>"; // 100 UAH = 4 USD
 			 
 			 //html weather result with animation
