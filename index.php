@@ -7,7 +7,7 @@
 	  
 	  <meta charset="utf-8">
       <meta http-equiv="Content-Type" content="text/html">
-      <meta name="description" content="Currency exchange rate data and currency conversion" />
+      <meta name="description" content="Онлайн конвертер валют" />  <!-- Currency exchange rate data and currency conversion-->
       <meta name="keywords" content="Currency calculator, exchange rate data and currency conversion">
 
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -16,6 +16,9 @@
       <script src="js/myCurrency.js"></script><!--  Core Currency JS-->  
 	  <script src="js/currenciesList.js"></script><!--  List of currencies + generates <list><option> JS--> 
 	  <script src="js/changeStyleTheme.js"></script><!--  change wallpapers,changeStyleTheme JS-->
+	  <script src="js/apiGet_ajaxStatistics.js"></script><!-- JS - onClick gets Api statistics in modal-->
+	  <script src="js/apiGet_ajaxHistorical.js"></script><!-- JS - Diagram Range with currency history-->
+	  
 	 
       <link rel="stylesheet" type="text/css" media="all" href="css/myCurrency.css">
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- Icon lib-->
@@ -35,10 +38,11 @@
   
   
   
-  
+
   
   
    <div id="headX" class=" text-center myShadow colorAnimate head-style"> <!--#2ba6cb;-->
+       
 	   
          <h1 id="h1Text">
              <img id ="wLogo" class="shrink-large" src="">	 
@@ -71,7 +75,7 @@
 		         <div class="col-sm-12 col-xs-12 myShadow mainX head-style" style="background-color:;">
 				     <i class="	fa fa-dollar" style="font-size:40px"></i>&nbsp;&nbsp;<i class="fa fa-toggle-on" style="font-size:40px"></i>
 				 
-			         <form class="form-inline" action="Classes/Currency.php">
+			         <form class="form-inline" action="">
                           <div class="form-group">
                               <label for="sum">Sum</label>
                               <input type="number" min="1" value="1" class="form-control" id="sum" name="sumX">
@@ -90,9 +94,41 @@
 				   
 			     </div> <!--END  <div class="col-sm-4 col-xs-12 myShadow mainX-->
 				
+				
+				
 				 
+				  <!--------------------------------Start Historical(rates for certain date)------------------------------------------------->
+				  <br><br><br><br><br>
+				  <input id ="showPeriodRangeDiv" type="button" class="btn btn-default " style="font-size:8px; margin-top:7px;" value="Check History"/><br>
+				  
+				  <!-- Div with  specified period diagram-->
+				  <div class="col-sm-10 col-xs-12" id="periodDiagramDiv"> <!-- div calc exchange-->
+				    <h2 class="textShadow"> View history of currency exchange rates</h2>
+				      <form class="form-inline" action="">
+					  
+					      <div class="form-group">
+                              <label for="dateHistorical">Select date starting from Jan 1st, 1999</label>
+				              <input type="date" name="" id="dateHistorical"> 
+						  </div>
+						  
+						  
+						  
+						  <div class="form-group" id="Currency_Diagram_dropdown"><!-- Currency for Diagram, generated in js/currenciesList.js with function {generateSelectOption(selectedOption, i, spanID, textR)}--> 
+                          </div>
+						  
+						  <input id ="getDiagram" type="button" class="btn btn-default fa fa-cc-visa" style="font-size:20px" value="Get">
+						  
+					</form>
+						  
 				  
 				  
+				  
+				       <!-- This div accepts Diagram period the JS html result-->
+				       <div class="col-sm-10 col-xs-12" id="periodDiagramDivResult"> 
+				       </div>
+				       <!--------------------------------END  Historical(rates for certain date------------------------------------------------->
+				  
+				  </div> <!-- END class="row periodDiagram">-->
 				  
 				  
 				  <!----Currency Core result---->
@@ -106,7 +142,9 @@
 				 </div> <!-- END class="row CurrencyResult">-->
 				  
 				  
-				  
+				 
+
+		 
 				 
 				 <br><br><br><br><br><br><br><br><br><br><br>
 				 <!-------------------------------FACEBOOK SHARE--------------------------------------->
@@ -197,6 +235,13 @@
                   <div class="modal-body">
 				      <center>
 				      <img src="images/data.jpg" alt="img"/><br><br><br>
+					  
+					  <button type="button" id="apiStatButton" class="btn"> View statistics</button> <!-- button to send ajax for statistics details-->
+					  <!-- div to display statistics details-->
+					  <div id="apiStatistics" class="stats">
+					  </div>
+					  <br><br>
+					  
                       <p>Open Exchange Rates provides a simple, lightweight and portable JSON API with live and historical foreign exchange (forex) rates for over 200 worldwide and digital currencies, via a simple and easy-to-integrate API, in JSON format. 
 					      <br><br>Data are tracked and blended algorithmically from multiple reliable sources, ensuring fair and unbiased consistency. 
                           <br><br>Exchange rates published through the Open Exchange Rates API are collected from multiple reliable providers, blended together and served up in JSON format for everybody to use. There are no complex queries, confusing authentication methods or long-term contracts.

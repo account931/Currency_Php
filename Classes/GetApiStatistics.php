@@ -1,22 +1,22 @@
 <?php
-include '../Credentials/api_credentials.php'; //api key
- class Currency
+ include '../Credentials/api_credentials.php'; //api key
+ class GetApiStatistics
  {
 		
 		
 		
-    public static function askCurrencyApi()
+    public static function askStatistics()
 	{
 		
 	     //form the URL for Currency API
-	     $data_url = "https://openexchangerates.org/api/latest.json?app_id=".API_KEY;  //
+	     $data_url = "https://openexchangerates.org/api/usage.json?app_id=".API_KEY;  //
 	
 	     // Gets the OpenWeather API
          if (!$json = file_get_contents($data_url)) {
-		     echo "<br>Currency php Error</br>";
+		     echo "<br>Api stats php Error</br>";
 	     }
          //$obj = json_decode($json,true);//,  true used for [], not  used  for '->';
-	
+	     
          echo $json;
          //print_r($obj); // display the JSOn to screen
          //echo json_encode($obj); // MAke sure JSOn encode  gotten result 

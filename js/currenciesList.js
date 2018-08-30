@@ -52,10 +52,12 @@ $(document).ready(function(){
     // **************************************************************************************
 	
 	
-	
+	//Dropdowns for From/To
 	generateSelectOption( 13, 1, "Currency1_dropdown1", ""); //("which currency option to set selected, 1 or 2 to add to id="sel", span to html() <select><option>, text(from or to)
 	   
 	generateSelectOption( 12, 2, "Currency2_dropdown2", "To:&nbsp;");
+	
+	generateSelectOption( 12, 3, "Currency_Diagram_dropdown", "Currency:&nbsp;"); // Dropdown for Diagram period history
 	
 });
 // end ready	

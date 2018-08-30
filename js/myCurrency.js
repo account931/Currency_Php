@@ -177,7 +177,7 @@ $(document).ready(function(){
 			 
 			 
 			 if (parseInt(exchangeRate) !== exchangeRate) {  //check if it is Float, n ot int (if has ".")
-                 alert("Float is detected");
+                 //alert("Float is detected");
 	             c = exchangeRate.toFixed(20);  // fixes trouble with long  floats,  helps to avoid scintific notation "e"
 	
                  var stringX = c.toString();     //alert(stringX);
@@ -190,7 +190,7 @@ $(document).ready(function(){
                  }
                  //alert(arr[1][1]);
  
-                 alert("cut to-> " + i);
+                 //alert("cut to-> " + i);
 
                  n = i + 1;
 	            //alert(parseFloat(c));

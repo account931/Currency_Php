@@ -63,8 +63,32 @@ $(document).ready(function(){
 		'https://www.welovesolo.com/wp-content/uploads/vector/46/Pattern-word-cloud-creative-vector-07.jpg',  //text 3
 		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHbhzuoJFsUlWKBKqGRtReqUAcWg6TbphM3BPEzeQDJa-sqfl6',  //violet
 		'',  //EMPTY
+		
+		//donor
+		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQsQf2-zwuStKf6u2V2HE_nCy9rRvk5M8ag043FAenQbOrCXY3tA', //violat blocks
+		'http://marcialmiller.com/wordpress/wp-content/uploads/2011/01/AllPatternBlockDesignbyBen-300x266.jpg',
+		'http://marcialmiller.com/wordpress/wp-content/uploads/2011/01/Rowof5Hexagons-300x137.jpg',
+		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDhtR1BhDwTew8S7AJcbI94v0UFv2pjXwt2kdsqBSxfcgi8uObLg',
+		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv-cxQe9A6rZsR8JUE_zJwX5S94nVXyaIy1H6NyhTNw1S_sv-P',
+		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvhyI_kI_Xaw_-a-MRTYeFpVWGlS9-zrP-mdDl_XTPh71wGuV6Mw',
+		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK3pJbHeAoIHUlC3DUS38TW-hYjPrEgid6HSrg-nNnT0JFz-eqyA',
+		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_ZKIBvxb64CAuTASJHnrBzqyX_v_QwmJORswtVHC9vU-gvi9JlA',
+		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmRq-OXCzPXuuxEGABGb3yK1qUeSxPMIBKtzimgUMGKUipjQZztw',
+		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIkwu2oXo3ZV5VpHJs0BP32y78wQyuts-GBuLcs4PgEqa03SJ0uw',
+		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQONTF91XqYYCUUD8bQFRnRouMRq4Lxp7h0PijXJMpkkjT4Djb0sQ',  //bricks
+		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIgoIVKj2tvvrwKirnEvLIVp7XEE2VpyEB4HVpAopp6p-Jvppe',
    ];
    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
