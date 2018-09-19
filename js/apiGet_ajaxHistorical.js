@@ -5,6 +5,11 @@ $(document).ready(function(){
 	// Click to show hidden Historical div
 	$("#showPeriodRangeDiv").click(function() {  
 	    $("#periodDiagramDiv").toggle(1200);
+		
+		//hide exchange results 171 country
+		$("#currencyResult").fadeOut(700);	//hide all curr list
+        $("#exchangeResult").fadeOut(400);	
+         		 
 	   
 	}); 
 	
@@ -126,21 +131,27 @@ $(document).ready(function(){
 	
 	function construct_ajaxDiagramPeriod_Answer(dataZ, currencyHistorical_Arg, userInput_Arg)  //arguments:(received ajax data, selected currency(won't be visible withou this, selected date))
 	{
+		try{	
 		
+		    //alert(currencyHistorical_Arg);
+	        var alls = "<h3 class='red myShadow textShadow'>Historical diagram =>  </h3><div class='row border-black'>";
 		
-		//alert(currencyHistorical_Arg);
-	    var alls = "<h3 class='red myShadow textShadow'>Historical diagram =>  </h3><div class='row border-black'>";
+		    if(typeof dataZ.rates[currencyHistorical_Arg] === 'undefined' || dataZ.rates[currencyHistorical_Arg] === null) {  //if exchange rate was not found 
+				throw "<br><p class='red'>Please note, specified request was not found, try another date</p>";
+			}
 		
-		
-		alls = alls + "Exchange rate for " +
-        	         currencyHistorical_Arg + " on " + userInput_Arg + 
-			         " was " +  
-			         dataZ.rates[currencyHistorical_Arg] + " USD"; // dataZ.rates.currencyHistorical_Arg causes MEGA ERROR
+		    alls = alls + "Exchange rate for " +
+        	             currencyHistorical_Arg + " on " + userInput_Arg + 
+			             " was " +  
+			             dataZ.rates[currencyHistorical_Arg] + " " + currencyHistorical_Arg  +  " per 1 USD"; // dataZ.rates.currencyHistorical_Arg causes MEGA ERROR
 			   
-	    alls = alls + "</div><br><input id ='diagramDismiss' type='button' class='btn btn-default' style='font-size:20px' value='OK'>";
-	    //html weather result with animation
-        $("#periodDiagramDivResult").stop().fadeOut("slow",function() { $(this).html(alls)}).fadeIn(2000);
-	
+	        alls = alls + "</div><br><input id ='diagramDismiss' type='button' class='btn btn-default' style='font-size:20px' value='OK'>";
+	        //html weather result with animation
+            $("#periodDiagramDivResult").stop().fadeOut("slow",function() { $(this).html(alls)}).fadeIn(2000);
+			
+		} catch(err) {
+			$("#periodDiagramDivResult").stop().fadeOut("slow",function() { $(this).html(err)}).fadeIn(2000);
+		}
 	
 		  
 		  

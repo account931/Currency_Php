@@ -11,18 +11,28 @@ $(document).ready(function(){
 	
 	// Click to show all 170 currencies rate
 	$("#getAllCurrencyList").click(function() {  
+	    closeResults();
 	    myAjax_toShowAllCurrenciesList(); //uses the same  function  myAjaxCurrencyRequest();
+		
 	});
 	
 	
 	// Click to close results (list and exchange)
 	$(document).on("click", '.close-it', function() {   // this  click  is  used  to   react  to  newly generated cicles;
-         $("#currencyResult").fadeOut(700);	//hide all curr list
-         $("#exchangeResult").fadeOut(400);	
-         scroll_toTop();		 
+        closeResults();		 
 	    
 	});
 	
+	
+	
+	// **************************************************************************************
+    // **************************************************************************************
+    //                                                                                     **
+	function closeResults(){
+		$("#currencyResult").fadeOut(700);	//hide all curr list
+         $("#exchangeResult").fadeOut(400);	
+         scroll_toTop();
+	}
 	
 	
 	
@@ -100,7 +110,7 @@ $(document).ready(function(){
 		var l = Object.keys(data.rates).length;
 		//alert("Found currencies " + l);
 		
-		var alls = "<h3 class='red myShadow textShadow'>All currencies => " + l + " </h3><div class='row border-black'>";
+		var alls = "<br><br><h3 class='red myShadow textShadow'>All currencies => " + l + " </h3><div class='row border-black'>";
 		
 		for (var key in data.rates) {
 	    //for (var i = 0; i < l; i++){  
@@ -172,35 +182,35 @@ $(document).ready(function(){
 			 var exchangeRate = selected_toUSD * window.myJsonData.rates[curr2];  //gets the Final sum ( USD sum * exch rate selected_2 currency)
 			 
 			 
-			 // fixing cases when exchange rate = 0.001
+			 // fixing cases when exchange rate = 0.001-------------
 			 var n = 2;  //counter for toFixed(n)
 			 
 			 
-			 if (parseInt(exchangeRate) !== exchangeRate) {  //check if it is Float, n ot int (if has ".")
+			 if (parseInt(exchangeRate) !== exchangeRate) {  //check if it is Float, not int (if has ".")
                  //alert("Float is detected");
-	             c = exchangeRate.toFixed(20);  // fixes trouble with long  floats,  helps to avoid scintific notation "e"
+	             var c = exchangeRate.toFixed(20);  // fixes trouble with long  floats,  helps to avoid scintific notation "e"
 	
                  var stringX = c.toString();     //alert(stringX);
 	             var arr = c.split('.');
-                 var final = arr[1];  //alert('array -> ' + final);
+                 var final = arr[1];  //float part after the "."     //alert('array -> ' + final);
                  var i = 1;
  
-                 while (final[i] == 0) {  //arr[1]= 00007;
+                 while (final[i] == 0) { //if  float part after the "." equals 0     //arr[1]= 00007;
                       ++i;
                  }
                  //alert(arr[1][1]);
  
                  //alert("cut to-> " + i);
 
-                 n = i + 1;
+                 n = i + 1;  //numberr to use in toFixed(n)
 	            //alert(parseFloat(c));
                 //alert(parseFloat(c).toFixed(n + 1));  //must include parseFloat(c) to convert string to Float ot  it will contain "e" //must include (n+1) to get correct toFix
 	 
             } else { // if it is a int , not Float do nothing
-                alert("No match for FLOAT " + c);
+                alert("No match for FLOAT, it is just an int " + c);
             }
  
-			 // end fixing
+			 // end fixing-------------------
 			 
 			 
 			 
