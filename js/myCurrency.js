@@ -217,7 +217,7 @@ $(document).ready(function(){
 			 
 			 
 			 var finalExchange = exchangeRate.toFixed(n) + " " + curr2; //gets the Final sum ( USD sum * exch rate selected_2 currency),{.toFixed(2)} = 3.77 instead 3.77458745438954
-		     var finalText = "<h3 class='red border-black myShadow textShadow'><span class='badge close-it' style='padding:0.8em;'>X</span><i class='fa fa-child' style='font-size:48px;margin-left:5%;'></i><br><br>" +  $("#sum").val() + " " + curr1 + " = " + finalExchange + "</h3>"; // 100 UAH = 4 USD
+		     var finalText = "<h3 class='red border-black myShadow textShadow'><span class='badge close-it ios-clickable' style='padding:0.8em;'>X</span><i class='fa fa-child' style='font-size:48px;margin-left:5%;'></i><br><br>" +  $("#sum").val() + " " + curr1 + " = " + finalExchange + "</h3>"; // 100 UAH = 4 USD
 			 
 			 //html weather result with animation
              $("#exchangeResult").stop().fadeOut("slow",function(){ $(this).html(finalText)}).fadeIn(2000);
