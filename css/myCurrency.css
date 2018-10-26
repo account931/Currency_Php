@@ -13,6 +13,8 @@
 .border-black{border: 1px solid black; padding:15px;}
 
 
+/* IOS FIX, makes element clickable on IOS */
+.ios-clickable{cursor:pointer;}
 
 /* ---------------------Preloader, located in index.php, hidden by default */
 #overlay {
@@ -51,17 +53,16 @@
 .head-style{
 	color:white;
 	background-color:lavender;padding:10px;
-	background-image: url('../images/bg-pattern.jpg');
-	text-shadow: 1px 1px 2px black, 0 0 1em red; /* Параметры тени */
+	background-image: url('../images/bg-pattern.jpg'); 
+	text-shadow: 1px 1px 2px black, 0 0 1em red; /* Shadow params */
+	
+	/* describes the animation behaviour */
+	-webkit-transition: all 1.5s ease;
+    -moz-transition: all 1.5s ease;
+    -o-transition: all 1.5s ease;
+     transition: all 1.5s ease;
 }
-
-/*
-https://i.pinimg.com/originals/08/58/d6/0858d6df28c34239fe8e0077e19be750.png  cash
-https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQvp8gXVXK0Vb7ctlANuwugGW13OTnAWqriztJUGoBRXd0CXK8    blue
-https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfDxrC1c4GaaJmBlciFeUZ8bsHheWefJXbGiUOFYOnXR5oGrVhAg  steel
-https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScJTFmh8ur7hPYFn543z7OnYh1Kv3d51AQWWFiPDjJH8Bm7O3K    blue 2
-
-*/
+/* END Class that sets background-image */
 
 
 
@@ -84,3 +85,17 @@ https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScJTFmh8ur7hPYFn543z7OnYh1
    -1px  1px 2px black,
    -1px -1px 2px black;	 
 } 
+
+
+
+.stats{
+	margin-top:10px;
+	padding:30px;
+}
+
+
+/* Div with historical diagram range*/
+#periodDiagramDiv{
+	display:none;
+	margin-top:2em;
+}
